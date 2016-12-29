@@ -18,8 +18,8 @@ export class WeatherService{
 
   }
 
-  getWeather(city, state){
-    return this.http.get(this.conditionsUrl+'/'+state+'/'+city+'.json')
+  getWeather(zmw){
+    return this.http.get(this.conditionsUrl+'/zmw:'+zmw+'.json')
       .map(res => res.json());
   }
 
@@ -30,3 +30,5 @@ export class WeatherService{
   }
 
 }
+
+// WeatherApikey.API_Key
