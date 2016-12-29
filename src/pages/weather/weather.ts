@@ -36,7 +36,6 @@ export class WeatherPage {
   getQuery(){
     this.ws.searchCities(this.searchStr)
       .subscribe(res => {
-        console.log(res)
         this.results = res.RESULTS;
       });
 
