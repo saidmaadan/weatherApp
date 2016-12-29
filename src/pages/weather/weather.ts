@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { NavController } from 'ionic-angular';
 import { WeatherService} from '../../app/services/weather.service';
 
@@ -26,14 +25,20 @@ export class WeatherPage {
   }
 
   getDefaultLocation(){
-    this.zmw = '10001.11.99999';
+    // this.zmw = '00000.2.WDNAA';
+    if(localStorage.getItem('location') !== undefined){
+      this.zmw = JSON.parse(localStorage.getItem('location')).zmw;
+    } else {
+      this.zmw = '00000.2.WDNAA';
+    }
   }
 
   getQuery(){
     this.ws.searchCities(this.searchStr)
       .subscribe(res => {
+        console.log(res)
         this.results = res.RESULTS;
-      })
+      });
 
   }
 
