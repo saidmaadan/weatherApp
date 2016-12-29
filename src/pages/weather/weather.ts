@@ -11,6 +11,8 @@ export class WeatherPage {
   city: String;
   state: String;
   weather: any;
+  searchStr: String;
+  results: any;
 
   constructor(public navCtrl: NavController, private ws: WeatherService) {
     this.city = "Austin";
@@ -22,6 +24,14 @@ export class WeatherPage {
       .subscribe(weather => {
         this.weather = weather.current_observation;
       });
+  }
+
+  getQuery(){
+    this.ws.searchCities(this.searchStr)
+      .subscribe(res => {
+        this.results = res.RESULTS;
+      })
+
   }
 
 }
